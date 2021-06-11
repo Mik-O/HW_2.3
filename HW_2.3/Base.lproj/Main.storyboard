@@ -23,11 +23,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="kSU-AP-kMx"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5rF-69-Vqx">
                                         <rect key="frame" x="0.0" y="54" width="200" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="46P-8G-EsO"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -38,7 +44,8 @@
                                         <rect key="frame" x="119" y="0.0" width="42" height="30"/>
                                         <state key="normal" title="Log In"/>
                                         <connections>
-                                            <segue destination="ejM-ap-C2J" kind="presentation" modalPresentationStyle="fullScreen" id="HlU-ih-0dy"/>
+                                            <action selector="logInPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z01-DR-fYp"/>
+                                            <segue destination="ejM-ap-C2J" kind="presentation" modalPresentationStyle="fullScreen" id="9OG-7n-65b"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Bw-39-inE">
@@ -47,10 +54,16 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVZ-On-9oJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="30"/>
                                                 <state key="normal" title="Forgot User Name?"/>
+                                                <connections>
+                                                    <action selector="forgotUserNamePressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="0eZ-DL-by6"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-Ds-erc">
                                                 <rect key="frame" x="153" y="0.0" width="123" height="30"/>
                                                 <state key="normal" title="Fogort password?"/>
+                                                <connections>
+                                                    <action selector="forgotPasswordPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="eCr-yh-zEu"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -78,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="139" y="60"/>
         </scene>
-        <!--View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="Y4s-45-IpM">
             <objects>
-                <viewController id="ejM-ap-C2J" sceneMemberID="viewController">
+                <viewController id="ejM-ap-C2J" customClass="WelcomeViewController" customModule="HW_2_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P80-lv-c8m">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,6 +111,9 @@
                                 <state key="normal" title="Log Out">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Xyh-Qv-25Q" kind="unwind" unwindAction="unwindSegueWithSegue:" id="YRc-FJ-bzI"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVZ-vb-Xe9">
                                 <rect key="frame" x="106" y="224" width="108" height="120"/>
@@ -116,9 +132,13 @@
                             <constraint firstItem="uj9-d9-lEO" firstAttribute="centerX" secondItem="P80-lv-c8m" secondAttribute="centerX" id="N3r-W0-yCa"/>
                             <constraint firstItem="owh-iL-bzc" firstAttribute="top" secondItem="juL-bk-8ru" secondAttribute="top" constant="100" id="nSG-F5-xql"/>
                         </constraints>
+                        <connections>
+                            <outlet property="welcomeLabel" destination="owh-iL-bzc" id="fUZ-Uc-Icf"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ak-tz-J79" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Xyh-Qv-25Q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="877" y="60"/>
         </scene>
